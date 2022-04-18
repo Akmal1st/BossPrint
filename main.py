@@ -26,31 +26,25 @@ class MainWindow(QWidget):
         self.btnAdd.clicked.connect(lambda: self.addItems())
         self.btnClear.clicked.connect(lambda: self.clearForm())
         self.btnRemove.clicked.connect(lambda: self.objRemove())
-        # Table
-        # self.jadval.setItem(0, 0, QTableWidgetItem("Sanasi"))
-        # self.jadval.setItem(0, 1, QTableWidgetItem("Sahifalari"))
-        # self.jadval.setItem(0, 2, QTableWidgetItem("Formati"))
-        # self.jadval.setItem(0, 3, QTableWidgetItem("Turi"))
-        # self.jadval.setItem(0, 4, QTableWidgetItem("Soni"))
-        # self.jadval.setItem(0, 5, QTableWidgetItem("Oldindan to'lov"))
-        # self.jadval.setItem(0, 6, QTableWidgetItem("Summasi"))
-        # print(self.dataFormat.currentText())
-        # print(self.dataSoni.value())
+        self.dataAvans.setCurrentIndex(2)
+
     def objRemove(self):
         self.jadval.removeRow(self.jadval.currentRow())
         self.solve()
 
-    def clearForm(self):
+    def clearForm(self, tozalash=True):
+        self.dataName.setText("")
         self.dataPages.setText("")
         self.dataFormat.setCurrentIndex(0)
         self.dataTuri.setCurrentIndex(0)
-        self.dataAvans.setCurrentIndex(0)
+        self.dataAvans.setCurrentIndex(2)
         self.dataSoni.setValue(1)
-        for row in range(self.jadval.rowCount()-1,-1,-1):
-            self.jadval.removeRow(row)
-        self.result_price.setText("0")
-        self.result_avans.setText("0")
-        
+        if tozalash:
+            for row in range(self.jadval.rowCount()-1, -1, -1):
+                self.jadval.removeRow(row)
+            self.result_price.setText("0")
+            self.result_avans.setText("0")
+
     def addItems(self):
         price = self.get_price()
         prices = {"A5": price[0], "A4": price[1], "Stepler": {
@@ -59,13 +53,14 @@ class MainWindow(QWidget):
             prices[self.dataTuri.currentText()][self.dataFormat.currentText()]))*self.dataSoni.value()
         sana = datetime.date.today().strftime("%d.%m.%Y")
         data = [
-            str(sana),  # 0
-            str(self.dataPages.text()),  # 1
-            str(self.dataFormat.currentText()),  # 2
-            str(self.dataTuri.currentText()),  # 3
-            str(self.dataSoni.value()),  # 4
-            str(self.dataAvans.currentText()),  # 5
-            str(summa)  # 6
+            str(sana),
+            str(self.dataName.text()),
+            str(self.dataPages.text()),
+            str(self.dataFormat.currentText()),
+            str(self.dataTuri.currentText()),
+            str(self.dataSoni.value()),
+            str(self.dataAvans.currentText()),
+            str(summa)
         ]
         row = self.jadval.rowCount()
         self.jadval.setRowCount(row+1)
@@ -77,31 +72,31 @@ class MainWindow(QWidget):
         self.jadval.setItem(row, 4, QTableWidgetItem(data[4]))
         self.jadval.setItem(row, 5, QTableWidgetItem(data[5]))
         self.jadval.setItem(row, 6, QTableWidgetItem(data[6]))
+        self.jadval.setItem(row, 7, QTableWidgetItem(data[7]))
         self.solve()
+        self.clearForm(False)
 
     def solve(self):
-        n = int(self.dataPages.text()) if self.dataPages.text().isdigit() else 0
-        if n > 0:
-            summ = 0
-            avans = 0
-            # print(self.jadval.item(0, 6).text())
-            for row in range(self.jadval.rowCount()):
-                n = int(self.jadval.item(row, 6).text())
-                summ += n
-                avans += n*int(self.jadval.item(row, 5).text()[:-1])/100
-            if summ:
-                self.result_price.setText(str(summ))
-                self.result_avans.setText(str(avans))
+        # n = int(self.dataPages.text()) if self.dataPages.text().isdigit() else 0
+        # if n > 0:
+        summ = 0
+        avans = 0
+        # print(self.jadval.item(0, 6).text())
+        for row in range(self.jadval.rowCount()):
+            n = int(self.jadval.item(row, 7).text())
+            summ += n
+            avans += n*int(self.jadval.item(row, 6).text()[:-1])/100
+        self.result_price.setText(f"{summ:,d}".replace(",","."))
+        self.result_avans.setText(f"{int(avans):,d}".replace(",","."))
 
     def about(self):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
-        text = '''Bu dastur \"boss print\" uchun maxsus ishlab chiqilgan\nDastur versiyasi: V3.17.04.2022 \n\nTuzuvchi: Otaboboyev Akmal\nE-mail: akmal.otaboboyev@gmail.com\n\n\nBu dastur python dasturlash tilida yozilgan'''
+        text = '''Bu dastur \"boss print\" uchun maxsus ishlab chiqilgan\nDastur versiyasi: V3.18.04.2022 \n\nTuzuvchi: Otaboboyev Akmal\nE-mail: akmal.otaboboyev@gmail.com\n\n\nBu dastur python dasturlash tilida yozilgan'''
         msg.setText(text)
         msg.setWindowTitle("Dastur haqida")
         msg.setStandardButtons(QMessageBox.Ok)
         msg.exec_()
-
 
     def save(self):
         config = configparser.ConfigParser()
@@ -131,25 +126,20 @@ class MainWindow(QWidget):
         return prices
 
     def copy(self):
-        # data = [
-        #     [self.a5_stepler.text(), self.result_price_a5_stepler.text()+" so'm"],
-        #     [self.a4_stepler.text(), self.result_price_a4_stepler.text()+" so'm"],
-        #     [self.a5_pereplyot.text(), self.result_price_a5_pereplyot.text()+" so'm"],
-        #     [self.a4_pereplyot.text(), self.result_price_a4_pereplyot.text()+" so'm"]
-        # ]
-        # text = f"{data[0][0]} = {data[0][1]}\n{data[1][0]} = {data[1][1]}\n{data[2][0]} = {data[2][1]}\n{data[3][0]} = {data[3][1]}"
         text = ""
         for row in range(self.jadval.rowCount()):
-            text += "Sana: {}\nSahifalar soni: {}\nFormati: {}\nTuri: {}\nBuyurtma soni: {}\nOldindan to'lov miqdori: {}\nSumma: {} so'm\n\n".format(
+            text += "Sana: {}\nKitob nomi: {}\nSahifalar soni: {}\nFormati: {}\nTuri: {}\nBuyurtma soni: {}\nOldindan to'lov miqdori: {}\nSumma: {} so'm\n\n".format(
                 self.jadval.item(row, 0).text(),
                 self.jadval.item(row, 1).text(),
                 self.jadval.item(row, 2).text(),
                 self.jadval.item(row, 3).text(),
                 self.jadval.item(row, 4).text(),
                 self.jadval.item(row, 5).text(),
-                self.jadval.item(row, 6).text())
+                self.jadval.item(row, 6).text(),
+                self.jadval.item(row, 7).text())
 
-        text += "-"*20+"\nJami summa: {} so'm\nOldindan to'lov: {} so'm".format(self.result_price.text(), self.result_avans.text())
+        text += "-"*20+"\nJami summa: {} so'm\nOldindan to'lov: {} so'm".format(
+            self.result_price.text(), self.result_avans.text())
         cb = QApplication.clipboard()
         cb.clear(mode=cb.Clipboard)
         cb.setText(text, mode=cb.Clipboard)

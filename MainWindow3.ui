@@ -79,7 +79,7 @@
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(40, 40, 40);
+background-color: rgb(0, 140, 0);
 </string>
    </property>
    <property name="text">
@@ -518,7 +518,7 @@ background-color: rgb(40, 40, 40);
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>40</y>
+       <y>70</y>
        <width>85</width>
        <height>25</height>
       </rect>
@@ -539,7 +539,7 @@ background-color: rgb(40, 40, 40);
      <property name="geometry">
       <rect>
        <x>105</x>
-       <y>40</y>
+       <y>70</y>
        <width>100</width>
        <height>25</height>
       </rect>
@@ -573,7 +573,7 @@ background-color: rgb(40, 40, 40);
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>70</y>
+       <y>100</y>
        <width>85</width>
        <height>25</height>
       </rect>
@@ -594,7 +594,7 @@ background-color: rgb(40, 40, 40);
      <property name="geometry">
       <rect>
        <x>105</x>
-       <y>70</y>
+       <y>100</y>
        <width>100</width>
        <height>25</height>
       </rect>
@@ -622,7 +622,7 @@ background-color: rgb(40, 40, 40);
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>100</y>
+       <y>130</y>
        <width>85</width>
        <height>25</height>
       </rect>
@@ -643,7 +643,7 @@ background-color: rgb(40, 40, 40);
      <property name="geometry">
       <rect>
        <x>105</x>
-       <y>100</y>
+       <y>130</y>
        <width>100</width>
        <height>25</height>
       </rect>
@@ -670,7 +670,7 @@ background-color: rgb(40, 40, 40);
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>160</y>
+       <y>190</y>
        <width>195</width>
        <height>25</height>
       </rect>
@@ -691,7 +691,7 @@ background-color: rgb(40, 40, 40);
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>190</y>
+       <y>220</y>
        <width>195</width>
        <height>25</height>
       </rect>
@@ -715,7 +715,7 @@ background-color: rgb(40, 40, 40);
      <property name="geometry">
       <rect>
        <x>105</x>
-       <y>130</y>
+       <y>160</y>
        <width>100</width>
        <height>25</height>
       </rect>
@@ -758,7 +758,7 @@ background-color: rgb(40, 40, 40);
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>130</y>
+       <y>160</y>
        <width>85</width>
        <height>25</height>
       </rect>
@@ -772,7 +772,7 @@ background-color: rgb(40, 40, 40);
       </font>
      </property>
      <property name="text">
-      <string>To'lov</string>
+      <string>Avans</string>
      </property>
     </widget>
     <widget class="QTableWidget" name="jadval">
@@ -795,15 +795,20 @@ background-color: rgb(40, 40, 40);
      <attribute name="horizontalHeaderCascadingSectionResizes">
       <bool>true</bool>
      </attribute>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>70</number>
+     </attribute>
      <attribute name="horizontalHeaderMinimumSectionSize">
       <number>60</number>
-     </attribute>
-     <attribute name="horizontalHeaderDefaultSectionSize">
-      <number>80</number>
      </attribute>
      <column>
       <property name="text">
        <string>Sana</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Nomi</string>
       </property>
      </column>
      <column>
@@ -828,7 +833,7 @@ background-color: rgb(40, 40, 40);
      </column>
      <column>
       <property name="text">
-       <string>To'lov</string>
+       <string>Avans</string>
       </property>
      </column>
      <column>
@@ -841,7 +846,7 @@ background-color: rgb(40, 40, 40);
      <property name="geometry">
       <rect>
        <x>105</x>
-       <y>10</y>
+       <y>40</y>
        <width>100</width>
        <height>25</height>
       </rect>
@@ -876,7 +881,7 @@ background-color: rgb(40, 40, 40);
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>220</y>
+       <y>250</y>
        <width>195</width>
        <height>25</height>
       </rect>
@@ -906,7 +911,7 @@ background-color: rgb(40, 40, 40);
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>10</y>
+       <y>40</y>
        <width>85</width>
        <height>25</height>
       </rect>
@@ -936,9 +941,9 @@ background-color: rgb(40, 40, 40);
      <property name="geometry">
       <rect>
        <x>510</x>
-       <y>260</y>
+       <y>250</y>
        <width>160</width>
-       <height>30</height>
+       <height>35</height>
       </rect>
      </property>
      <property name="font">
@@ -957,9 +962,9 @@ background-color: rgb(40, 40, 40);
      <property name="geometry">
       <rect>
        <x>690</x>
-       <y>260</y>
+       <y>250</y>
        <width>130</width>
-       <height>30</height>
+       <height>35</height>
       </rect>
      </property>
      <property name="font">
@@ -980,7 +985,7 @@ background-color: rgb(40, 40, 40);
        <x>375</x>
        <y>290</y>
        <width>295</width>
-       <height>30</height>
+       <height>35</height>
       </rect>
      </property>
      <property name="font">
@@ -1001,7 +1006,7 @@ background-color: rgb(40, 40, 40);
        <x>690</x>
        <y>290</y>
        <width>130</width>
-       <height>30</height>
+       <height>35</height>
       </rect>
      </property>
      <property name="font">
@@ -1019,14 +1024,52 @@ background-color: rgb(40, 40, 40);
     <widget class="QPushButton" name="btnRemove">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>215</x>
        <y>250</y>
        <width>195</width>
-       <height>35</height>
+       <height>25</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Belgilanganni o'chirish</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_15">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>45</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Nomi</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="dataName">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>10</y>
+       <width>145</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
     </widget>
    </widget>
@@ -1071,24 +1114,26 @@ background-color: rgb(40, 40, 40);
   </widget>
  </widget>
  <tabstops>
+  <tabstop>dataName</tabstop>
   <tabstop>dataPages</tabstop>
   <tabstop>dataFormat</tabstop>
   <tabstop>dataTuri</tabstop>
   <tabstop>dataSoni</tabstop>
   <tabstop>dataAvans</tabstop>
   <tabstop>btnAdd</tabstop>
-  <tabstop>btnCopy</tabstop>
-  <tabstop>btnClear</tabstop>
-  <tabstop>jadval</tabstop>
   <tabstop>tabWidget</tabstop>
-  <tabstop>btnAbout</tabstop>
-  <tabstop>price_save</tabstop>
-  <tabstop>price_a4</tabstop>
-  <tabstop>price_pereplyot_a4</tabstop>
-  <tabstop>price_a5</tabstop>
+  <tabstop>btnClear</tabstop>
+  <tabstop>btnCopy</tabstop>
+  <tabstop>btnRemove</tabstop>
   <tabstop>price_stepler_a4</tabstop>
+  <tabstop>price_save</tabstop>
   <tabstop>price_stepler_a5</tabstop>
+  <tabstop>price_pereplyot_a4</tabstop>
   <tabstop>price_pereplyot_a5</tabstop>
+  <tabstop>jadval</tabstop>
+  <tabstop>btnAbout</tabstop>
+  <tabstop>price_a4</tabstop>
+  <tabstop>price_a5</tabstop>
  </tabstops>
  <resources/>
  <connections/>
